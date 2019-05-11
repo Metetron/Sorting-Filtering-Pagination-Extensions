@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>A small set of extensions to help implement sorting, filtering and pagination.</Description>
+    <Authors>Daniel Freydl</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Metetron/Sorting-Filtering-Pagination-Extensions</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright (c) Daniel Freydl 2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
