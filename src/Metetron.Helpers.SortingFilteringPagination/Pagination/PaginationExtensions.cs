@@ -28,9 +28,9 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
             };
         }
 
-        public static async Task<QueryResult<T>> ApplyPagingAsnyc<T>(this IQueryable<T> query, IQueryObject queryObj)
+        public static async Task<QueryResult<T>> ApplyPagingAsync<T>(this IQueryable<T> query, IQueryObject queryObj)
         {
-            var totalNumberOfPages = query.Count();
+            var totalNumberOfPages = await query.CountAsync();
 
             return new QueryResult<T>
             {
