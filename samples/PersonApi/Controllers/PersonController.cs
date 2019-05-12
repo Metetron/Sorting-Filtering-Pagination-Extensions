@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Metetron.Helpers.SortingFilteringPagination.Filtering;
-using Metetron.Helpers.SortingFilteringPagination.Pagination;
 using Metetron.Helpers.SortingFilteringPagination.QueryObjects;
+using Metetron.Helpers.SortingFilteringPagination.Filtering;
 using Metetron.Helpers.SortingFilteringPagination.Sorting;
+using Metetron.Helpers.SortingFilteringPagination.Pagination;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PersonApi.Controllers
@@ -22,7 +22,7 @@ namespace PersonApi.Controllers
 
         private static Dictionary<string, Expression<Func<Person, object>>> columnMapping = new Dictionary<string, Expression<Func<Person, object>>>
         {
-            ["forname"] = p => p.ForeName,
+            ["forename"] = p => p.ForeName,
             ["sirname"] = p => p.SirName,
             ["email"] = p => p.Email
         };

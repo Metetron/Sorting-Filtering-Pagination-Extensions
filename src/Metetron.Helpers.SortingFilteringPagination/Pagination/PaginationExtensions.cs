@@ -18,9 +18,15 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
 
             return query.Skip((queryObj.CurrentPage - 1) * queryObj.PageSize).Take(queryObj.PageSize);
         }
+
+        private static int GetPageCount(int numberOfItems, int pageSize)
+        {
+            return (int)Ceiling(numberOfItems / (1.00 * pageSize));
+        }
+
         public static QueryResult<T> ApplyPaging<T>(this IQueryable<T> query, IQueryObject queryObj)
         {
-            var totalNumberOfPages = query.Count();
+            var totalNumberOfPages = GetPageCount(query.Count(), queryObj.PageSize);
 
             return new QueryResult<T>
             {
@@ -31,7 +37,7 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
 
         public static async Task<QueryResult<T>> ApplyPagingAsync<T>(this IQueryable<T> query, IQueryObject queryObj)
         {
-            var totalNumberOfPages = (int)Ceiling(await query.CountAsync() / 1.00 * queryObj.PageSize);
+            var totalNumberOfPages = GetPageCount(await query.CountAsync(), queryObj.PageSize);
 
             return new QueryResult<T>
             {
