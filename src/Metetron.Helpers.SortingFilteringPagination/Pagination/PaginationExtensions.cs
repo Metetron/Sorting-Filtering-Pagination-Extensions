@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Metetron.Helpers.SortingFilteringPagination.QueryObjects;
 using Microsoft.EntityFrameworkCore;
+using static System.Math;
 
 namespace Metetron.Helpers.SortingFilteringPagination.Pagination
 {
@@ -30,7 +31,7 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
 
         public static async Task<QueryResult<T>> ApplyPagingAsync<T>(this IQueryable<T> query, IQueryObject queryObj)
         {
-            var totalNumberOfPages = await query.CountAsync();
+            var totalNumberOfPages = (int)Ceiling(await query.CountAsync() / 1.00 * queryObj.PageSize);
 
             return new QueryResult<T>
             {
