@@ -10,6 +10,12 @@ namespace Metetron.Helpers.SortingFilteringPagination.Sorting
     {
         public static IQueryable<T> ApplySorting<T>(this IQueryable<T> query, IDictionary<string, Expression<Func<T, object>>> columnMapping, IQueryObject queryObj)
         {
+            if (columnMapping == null)
+                throw new ArgumentNullException(nameof(columnMapping));
+
+            if (queryObj == null)
+                throw new ArgumentNullException(nameof(queryObj));
+
             if (string.IsNullOrWhiteSpace(queryObj.SortBy) || !columnMapping.ContainsKey(queryObj.SortBy))
                 return query;
 
