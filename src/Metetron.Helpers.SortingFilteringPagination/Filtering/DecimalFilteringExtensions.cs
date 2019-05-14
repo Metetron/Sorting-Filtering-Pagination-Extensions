@@ -27,7 +27,7 @@ namespace Metetron.Helpers.SortingFilteringPagination.Filtering
             return query.Where(q => propertyToFilter.Compile().Invoke(q) <= constant);
         }
 
-        public static IQueryable<T> ApplyEqualToFilter<T>(this IQueryable<T> query, Expression<Func<T, decimal>> propertyToFilter, decimal constant, decimal delta = 0.01m)
+        public static IQueryable<T> ApplyEqualToFilter<T>(this IQueryable<T> query, Expression<Func<T, decimal>> propertyToFilter, decimal constant, decimal delta = 1e-5m)
         {
             return query.Where(q => Abs(propertyToFilter.Compile().Invoke(q) - constant) <= delta);
         }
