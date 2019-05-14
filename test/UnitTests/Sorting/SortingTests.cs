@@ -6,7 +6,7 @@ using UnitTests.TestObjects;
 using Xunit;
 using Metetron.Helpers.SortingFilteringPagination.Sorting;
 
-namespace UnitTests
+namespace UnitTests.Sorting
 {
     public class SortingTests
     {

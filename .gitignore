@@ -279,3 +279,4 @@ launchSettings.json
 
 # coverlet result
 coverage.json
+lcov.info

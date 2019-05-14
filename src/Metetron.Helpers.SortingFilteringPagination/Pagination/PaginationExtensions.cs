@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Metetron.Helpers.SortingFilteringPagination.QueryObjects;
@@ -8,14 +9,11 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
 {
     public static class PaginationExtensions
     {
+        private const int DefaultPageSize = 10;
+        private const int DefaultCurrentPage = 1;
+
         private static IQueryable<T> PageData<T>(this IQueryable<T> query, IQueryObject queryObj)
         {
-            if (queryObj.PageSize <= 0)
-                queryObj.PageSize = 1;
-
-            if (queryObj.CurrentPage <= 0)
-                queryObj.CurrentPage = 1;
-
             return query.Skip((queryObj.CurrentPage - 1) * queryObj.PageSize).Take(queryObj.PageSize);
         }
 
@@ -26,23 +24,37 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
 
         public static QueryResult<T> ApplyPaging<T>(this IQueryable<T> query, IQueryObject queryObj)
         {
-            var totalNumberOfPages = GetPageCount(query.Count(), queryObj.PageSize);
+            if (queryObj == null)
+                throw new ArgumentNullException(nameof(queryObj));
+
+            if (queryObj.PageSize <= 0)
+                queryObj.PageSize = DefaultPageSize;
+
+            if (queryObj.CurrentPage <= 0)
+                queryObj.CurrentPage = DefaultCurrentPage;
 
             return new QueryResult<T>
             {
                 ResultSet = query.PageData(queryObj).ToList(),
-                TotalNumberOfPages = totalNumberOfPages
+                TotalNumberOfPages = GetPageCount(query.Count(), queryObj.PageSize)
             };
         }
 
         public static async Task<QueryResult<T>> ApplyPagingAsync<T>(this IQueryable<T> query, IQueryObject queryObj)
         {
-            var totalNumberOfPages = GetPageCount(await query.CountAsync(), queryObj.PageSize);
+            if (queryObj == null)
+                throw new ArgumentNullException(nameof(queryObj));
+
+            if (queryObj.PageSize <= 0)
+                queryObj.PageSize = DefaultPageSize;
+
+            if (queryObj.CurrentPage <= 0)
+                queryObj.CurrentPage = DefaultCurrentPage;
 
             return new QueryResult<T>
             {
                 ResultSet = await query.PageData(queryObj).ToListAsync(),
-                TotalNumberOfPages = totalNumberOfPages
+                TotalNumberOfPages = GetPageCount(await query.CountAsync(), queryObj.PageSize)
             };
         }
     }

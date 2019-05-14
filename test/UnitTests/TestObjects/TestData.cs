@@ -14,6 +14,8 @@ namespace UnitTests.TestObjects
             new Person{ForeName = "Fn5", SirName = "Sn5", Email = "p5@domain.com", Age = 50},
             new Person{ForeName = "Fn6", SirName = "Sn6", Email = "p6@domain.com", Age = 60},
             new Person{ForeName = "Fn7", SirName = "Sn7", Email = "p7@domain.com", Age = 70},
+            new Person{ForeName = "Fn8", SirName = "Sn8", Email = "p8@domain.com", Age = 80},
+            new Person{ForeName = "Fn8", SirName = "Sn9", Email = "p9@domain.com", Age = 90},
             new Person{ForeName = "Jane", SirName = "Doe", Email = "jane.doe@domain1.com", Age = 30},
             new Person{ForeName = "Bob", SirName = "Smith", Email = "bob.smith@xyz.com", Age = 40}
         }.AsQueryable();
