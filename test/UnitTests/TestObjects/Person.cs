@@ -8,5 +8,6 @@ namespace UnitTests.TestObjects
         public int Age { get; set; }
         public double Height { get; set; }
         public float Weight { get; set; }
+        public decimal TestDecimal { get; set; }
     }
 }
