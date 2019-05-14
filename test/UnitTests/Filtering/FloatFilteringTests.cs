@@ -5,7 +5,8 @@ using System.Linq;
 
 namespace UnitTests.Filtering
 {
-    public class FloatFilteringExtensions
+    public class FloatFilteringTests
+
     {
         [Fact]
         public void ApplyGreaterThanFilter_WhenCalled_ShouldFilterTheQueryable()

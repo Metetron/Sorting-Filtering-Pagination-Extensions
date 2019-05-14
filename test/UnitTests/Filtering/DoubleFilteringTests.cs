@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace UnitTests.Filtering
 {
-    public class DoubleFilteringExtensions
+    public class DoubleFilteringTests
     {
         [Fact]
         public void ApplyGreateThanFilter_WhenCalled_ShouldFilterTheQueryable()
