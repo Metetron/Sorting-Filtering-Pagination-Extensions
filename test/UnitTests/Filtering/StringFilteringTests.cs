@@ -6,7 +6,7 @@ using System;
 
 namespace UnitTests.Filtering
 {
-    public class FilteringTests
+    public class StringFilteringTests
     {
         [Fact]
         public void ApplyContainsFilter_FilterStringIsEmpty_ShouldNotFilterTheQueryable()
