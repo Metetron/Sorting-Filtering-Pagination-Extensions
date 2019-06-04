@@ -36,6 +36,7 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
             return new QueryResult<T>
             {
                 ResultSet = query.PageData(queryObj).ToList(),
+                CurrentPage = queryObj.CurrentPage,
                 TotalNumberOfPages = GetPageCount(query.Count(), queryObj.PageSize)
             };
         }
@@ -54,6 +55,7 @@ namespace Metetron.Helpers.SortingFilteringPagination.Pagination
             return new QueryResult<T>
             {
                 ResultSet = await query.PageData(queryObj).ToListAsync(),
+                CurrentPage = queryObj.CurrentPage,
                 TotalNumberOfPages = GetPageCount(await query.CountAsync(), queryObj.PageSize)
             };
         }
